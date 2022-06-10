@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: mariadb:10.4.12
+    environment:
+      - MYSQL_ROOT_PASSWORD=somerootpass
+      - MYSQL_USER=someuser
+      - MYSQL_PASSWORD=somepass
+#      - MYSQL_DATABASE=RomaShop
+      - MYSQL_DATABASE=AlexShop
+      - XDEBUG_CONFIG=remote_host=host.docker.internal
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    environment:
+      XDEBUG_CONFIG: remote_host=host.docker.internal
+#      PHP_IDE_CONFIG: serverName=local-r
+      PHP_IDE_CONFIG: serverName=local-a
+    ports:
+      - "80:80"
+    volumes:
+      - ./apache/apache.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./Alex/shop-task5/:/var/www/
+#      - ./Roma/shop/:/var/www/
+
+volumes:
+  db-data:
