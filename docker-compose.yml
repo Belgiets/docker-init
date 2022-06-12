@@ -24,7 +24,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./apache/apache.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./apache.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./Alex/shop-task5/:/var/www/
 #      - ./Roma/shop/:/var/www/
 
