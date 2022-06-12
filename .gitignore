@@ -6,4 +6,4 @@
 !docker-compose.yml
 !Dockerfile
 !xdebug.ini
-!apache
+!apache.conf
